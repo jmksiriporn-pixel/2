@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บทเรียน</title>
+<style>
+:root{
+  --primary:#2563eb; --secondary:#0f172a; --accent:#f59e0b;
+  --bg:#eff6ff; --card:#ffffff; --text:#1e293b; --muted:#64748b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Thai",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{background:linear-gradient(135deg,#1d4ed8,#38bdf8);color:#fff;padding:28px 20px;text-align:center}
+header h1{margin:0 0 6px;font-size:clamp(25px,5vw,40px)}
+header p{margin:0;opacity:.95}
+nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 3px 12px #0001;display:flex;flex-wrap:wrap;justify-content:center}
+nav button{border:0;background:none;padding:14px 12px;font-weight:700;color:#334155;cursor:pointer}
+nav button:hover,nav button.active{color:var(--primary);background:#eff6ff}
+main{max-width:1050px;margin:auto;padding:25px 16px 50px}
+.page{display:none}.page.active{display:block}
+.hero,.card{background:var(--card);border-radius:20px;padding:25px;margin-bottom:20px;box-shadow:0 8px 25px #1e3a8a12}
+.hero{text-align:center}
+.icon{font-size:55px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.topic{border-radius:18px;padding:20px;background:#f8fafc;border:2px solid #dbeafe}
+.topic h3{color:var(--primary);margin-top:0}
+.tip{background:#fffbeb;border-left:6px solid var(--accent);padding:15px;border-radius:10px}
+.btn{border:0;border-radius:12px;background:var(--primary);color:#fff;padding:12px 20px;font-size:16px;font-weight:700;cursor:pointer}
+.btn:hover{filter:brightness(.95)}
+.btn.secondary{background:#64748b}
+form .field{margin-bottom:15px}
+label{display:block;font-weight:700;margin-bottom:5px}
+input{width:100%;padding:12px;border:2px solid #cbd5e1;border-radius:10px;font-size:16px}
+.question{border:1px solid #e2e8f0;border-radius:14px;padding:18px;margin:15px 0;background:#fff}
+.question label{font-weight:400;margin:8px 0;cursor:pointer}
+.result{padding:18px;border-radius:15px;background:#ecfdf5;border:2px solid #86efac;margin-top:20px;display:none}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:5px 12px;font-weight:700;margin:4px}
+footer{text-align:center;background:#0f172a;color:#cbd5e1;padding:25px}
+.small{color:var(--muted);font-size:.95rem}
+.activity-card{background:#f8fafc;border-radius:15px;padding:18px;margin:12px 0;border:1px dashed #93c5fd}
+.infographic-card{background:#fff;border-radius:20px;padding:22px;margin-bottom:22px;box-shadow:0 8px 25px #1e3a8a12;text-align:center}
+.infographic-card h2{color:var(--primary);margin-top:0}
+.infographic-image{display:block;width:100%;height:auto;max-height:900px;object-fit:contain;border:2px dashed #bfdbfe;border-radius:14px;background:#f8fafc;margin:14px auto}
+.image-note{color:var(--muted);font-size:.95rem;margin:8px 0 0}
+@media(max-width:600px){nav button{font-size:13px;padding:10px 7px}.hero,.card{padding:18px}}
+
+nav a{padding:14px 12px;font-weight:700;color:#334155;text-decoration:none;display:inline-block}
+nav a:hover,nav a.active{color:#2563eb;background:#eff6ff}
+</style>
+</head>
+<body>
+<header><div class="icon">🛡️</div><h1>อาชญากรรมทางอินเทอร์เน็ต</h1><p>บทเรียนสำหรับนักเรียนชั้นประถมศึกษาปีที่ 5</p></header>
+
+<nav>
+<a href="index.html">หน้าหลัก</a>
+<a href="pretest.html">บททดสอบก่อนเรียน</a>
+<a href="lesson.html">บทเรียน</a>
+<a href="activity.html">กิจกรรม</a>
+<a href="posttest.html">แบบทดสอบหลังเรียน</a>
+<a href="author.html">ผู้จัดทำ</a>
+</nav>
+
+<main>
+<section class="page active">
+<div class="card"><h2>📚 บทเรียน: อาชญากรรมทางอินเทอร์เน็ต</h2>
+<p>ศึกษาเนื้อหาจากอินโฟกราฟิกทั้ง 2 ภาพ เพื่อเรียนรู้เกี่ยวกับอาชญากรรมทางอินเทอร์เน็ต การสังเกตความเสี่ยง และวิธีป้องกันตนเองเมื่อใช้งานอินเทอร์เน็ต</p>
+<div class="tip"><b>คำแนะนำ:</b> ดูภาพและอ่านข้อความในแต่ละภาพให้ครบ จากนั้นสรุปสิ่งที่ได้เรียนรู้ก่อนทำกิจกรรม</div></div>
+<div class="infographic-card">
+<h2>🖼️ อินโฟกราฟิกที่ 1</h2>
+<img class="infographic-image" src="images/infographic-1.png" alt="อินโฟกราฟิกบทเรียนภาพที่ 1">
+<p class="image-note">ภาพที่ 1: เนื้อหาเกี่ยวกับอาชญากรรมทางอินเทอร์เน็ต</p>
+</div>
+<div class="infographic-card">
+<h2>🖼️ อินโฟกราฟิกที่ 2</h2>
+<img class="infographic-image" src="images/infographic-2.png" alt="อินโฟกราฟิกบทเรียนภาพที่ 2">
+<p class="image-note">ภาพที่ 2: แนวทางป้องกันและใช้อินเทอร์เน็ตอย่างปลอดภัย</p>
+</div>
+<div class="card"><h2>🛡️ สรุปก่อนทำกิจกรรม</h2>
+<p style="font-size:20px;text-align:center"><b>คิดก่อนคลิก เช็กก่อนเชื่อ ไม่เปิดเผยข้อมูลส่วนตัว และบอกผู้ใหญ่เมื่อพบสิ่งผิดปกติ</b></p></div>
+<div style="text-align:center"><a class="btn" href="activity.html" style="text-decoration:none;display:inline-block">ไปทำกิจกรรม →</a></div>
+</section></main>
+<footer>© บทเรียนอาชญากรรมทางอินเทอร์เน็ต | เรียนรู้อย่างปลอดภัย ใช้อินเทอร์เน็ตอย่างมีสติ</footer>
+<script></script>
+</body></html>

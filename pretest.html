@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บททดสอบก่อนเรียน</title>
+<style>
+:root{
+  --primary:#2563eb; --secondary:#0f172a; --accent:#f59e0b;
+  --bg:#eff6ff; --card:#ffffff; --text:#1e293b; --muted:#64748b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Thai",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{background:linear-gradient(135deg,#1d4ed8,#38bdf8);color:#fff;padding:28px 20px;text-align:center}
+header h1{margin:0 0 6px;font-size:clamp(25px,5vw,40px)}
+header p{margin:0;opacity:.95}
+nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 3px 12px #0001;display:flex;flex-wrap:wrap;justify-content:center}
+nav button{border:0;background:none;padding:14px 12px;font-weight:700;color:#334155;cursor:pointer}
+nav button:hover,nav button.active{color:var(--primary);background:#eff6ff}
+main{max-width:1050px;margin:auto;padding:25px 16px 50px}
+.page{display:none}.page.active{display:block}
+.hero,.card{background:var(--card);border-radius:20px;padding:25px;margin-bottom:20px;box-shadow:0 8px 25px #1e3a8a12}
+.hero{text-align:center}
+.icon{font-size:55px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.topic{border-radius:18px;padding:20px;background:#f8fafc;border:2px solid #dbeafe}
+.topic h3{color:var(--primary);margin-top:0}
+.tip{background:#fffbeb;border-left:6px solid var(--accent);padding:15px;border-radius:10px}
+.btn{border:0;border-radius:12px;background:var(--primary);color:#fff;padding:12px 20px;font-size:16px;font-weight:700;cursor:pointer}
+.btn:hover{filter:brightness(.95)}
+.btn.secondary{background:#64748b}
+form .field{margin-bottom:15px}
+label{display:block;font-weight:700;margin-bottom:5px}
+input{width:100%;padding:12px;border:2px solid #cbd5e1;border-radius:10px;font-size:16px}
+.question{border:1px solid #e2e8f0;border-radius:14px;padding:18px;margin:15px 0;background:#fff}
+.question label{font-weight:400;margin:8px 0;cursor:pointer}
+.result{padding:18px;border-radius:15px;background:#ecfdf5;border:2px solid #86efac;margin-top:20px;display:none}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:5px 12px;font-weight:700;margin:4px}
+footer{text-align:center;background:#0f172a;color:#cbd5e1;padding:25px}
+.small{color:var(--muted);font-size:.95rem}
+.activity-card{background:#f8fafc;border-radius:15px;padding:18px;margin:12px 0;border:1px dashed #93c5fd}
+@media(max-width:600px){nav button{font-size:13px;padding:10px 7px}.hero,.card{padding:18px}}
+
+nav a{padding:14px 12px;font-weight:700;color:#334155;text-decoration:none;display:inline-block}
+nav a:hover,nav a.active{color:#2563eb;background:#eff6ff}
+</style>
+</head>
+<body>
+<header><div class="icon">🛡️</div><h1>อาชญากรรมทางอินเทอร์เน็ต</h1><p>บทเรียนสำหรับนักเรียนชั้นประถมศึกษาปีที่ 5</p></header>
+
+<nav>
+<a href="index.html">หน้าหลัก</a>
+<a href="pretest.html">บททดสอบก่อนเรียน</a>
+<a href="lesson.html">บทเรียน</a>
+<a href="activity.html">กิจกรรม</a>
+<a href="posttest.html">แบบทดสอบหลังเรียน</a>
+<a href="author.html">ผู้จัดทำ</a>
+</nav>
+
+<main>
+<section class="page active"><div class="card"><h2>📝 แบบทดสอบ</h2>
+<p>กรุณากรอกชื่อ ชั้น และเลขที่ก่อนเข้าทำแบบทดสอบ</p>
+<form onsubmit="start(event)">
+<label>ชื่อ - นามสกุล</label><input id="name" required>
+<label>ชั้น</label><input id="class" required placeholder="เช่น ป.5/1">
+<label>เลขที่</label><input id="no" type="number" min="1" required>
+<br><br><button class="btn">เริ่มทำแบบทดสอบ</button></form></div>
+<div id="quiz" class="card" style="display:none"><h2>แบบทดสอบ 10 ข้อ</h2><div id="questions"></div>
+<button class="btn" onclick="submitQuiz(event)">ส่งคำตอบ</button><div id="result" class="result"></div></div></section>
+</main>
+<footer>© บทเรียนอาชญากรรมทางอินเทอร์เน็ต | เรียนรู้อย่างปลอดภัย ใช้อินเทอร์เน็ตอย่างมีสติ</footer>
+<script>
+const questions=[
+["อาชญากรรมทางอินเทอร์เน็ตหมายถึงอะไร?",["การใช้คอมพิวเตอร์ โทรศัพท์ หรืออินเทอร์เน็ตเพื่อหลอกลวง ขโมยข้อมูล หรือทำร้ายผู้อื่น","การเรียนออนไลน์","การดูวิดีโอ","การเล่นเกม"],0],
+["ข้อใดเป็นตัวอย่างของการหลอกลวงออนไลน์?",["ส่งข้อความหรือสร้างเว็บไซต์ปลอมเพื่อหลอกให้โอนเงิน","ตั้งรหัสผ่านที่ปลอดภัย","แจ้งครูเมื่อพบปัญหา","ไม่เผยแพร่ข้อมูลส่วนตัว"],0],
+["เมื่อได้รับลิงก์แปลก ๆ ควรทำอย่างไร?",["กดทันที","ส่งต่อให้เพื่อน","ไม่กดและตรวจสอบข้อมูลก่อนเชื่อ","บอกรหัสผ่านให้ผู้ส่ง"],2],
+["ข้อใดเป็นข้อมูลส่วนตัว?",["ชื่อ","เบอร์โทรศัพท์","รหัสผ่าน","ถูกทุกข้อ"],3],
+["การนำข้อมูลของผู้อื่นไปใช้โดยไม่ได้รับอนุญาตเรียกว่าอะไร?",["การขโมยข้อมูลส่วนตัว","การเรียนรู้","การสื่อสาร","การทำกิจกรรม"],0],
+["ข้อใดเป็นการป้องกันการขโมยข้อมูลส่วนตัว?",["บอกรหัสผ่านให้เพื่อน","เผยแพร่ข้อมูลส่วนตัว","ไม่เผยแพร่ข้อมูลส่วนตัวและไม่บอกรหัสผ่านให้ผู้อื่น","กดลิงก์ทุกลิงก์"],2],
+["การกลั่นแกล้งทางออนไลน์คืออะไร?",["การใช้สื่อออนไลน์ทำให้ผู้อื่นเสียใจ อับอาย หรือเดือดร้อน","การตั้งรหัสผ่าน","การตรวจสอบข้อมูล","การเรียนออนไลน์"],0],
+["เมื่อพบการกลั่นแกล้งทางออนไลน์ ควรทำอย่างไร?",["ส่งต่อข้อความ","ไม่ส่งต่อข้อความที่ทำร้ายผู้อื่นและแจ้งครูหรือผู้ปกครอง","สร้างบัญชีปลอม","เผยแพร่ข้อมูลส่วนตัว"],1],
+["การนำชื่อหรือรูปภาพของผู้อื่นไปสร้างบัญชีปลอมเรียกว่าอะไร?",["การปลอมแปลงบัญชีออนไลน์","การหลอกลวงด้วยรางวัล","การเรียนรู้","การป้องกันข้อมูล"],0],
+["หลักปฏิบัติใดถูกต้องเมื่อใช้อินเทอร์เน็ต?",["คิดก่อนคลิก เช็กก่อนเชื่อ ไม่เปิดเผยข้อมูล และบอกผู้ใหญ่เมื่อพบสิ่งผิดปกติ","กดทุกลิงก์","บอกรหัสผ่านให้คนอื่น","ส่งต่อข้อความที่ทำร้ายผู้อื่น"],0]
+];
+const type=location.pathname.includes("posttest")?"post":"pre";
+const qs=document.getElementById("questions");
+questions.forEach((x,i)=>{qs.innerHTML+=`<div class="question"><p><b>${i+1}. ${x[0]}</b></p>`+x[1].map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join("")+"</div>"});
+function submitQuiz(e){
+ e.preventDefault(); let score=0;
+ questions.forEach((x,i)=>{let a=document.querySelector(`input[name=q${i}]:checked`);if(a&&+a.value===x[2])score++});
+ const n=document.getElementById("name").value,c=document.getElementById("class").value,no=document.getElementById("no").value;
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").innerHTML=`<b>ผู้ทำแบบทดสอบ:</b> ${n}<br><b>ชั้น:</b> ${c} &nbsp; <b>เลขที่:</b> ${no}<br><b>คะแนน:</b> ${score}/10<br>${score>=8?"🌟 ทำได้ดีมาก!":score>=5?"👍 ทำได้ดี ลองทบทวนบทเรียนเพิ่มเติม":"📚 ลองกลับไปทบทวนบทเรียนอีกครั้ง"}`;
+}
+
+function start(e){e.preventDefault();document.getElementById("quiz").style.display="block";document.getElementById("quiz").scrollIntoView({behavior:"smooth"});}
+</script>
+</body></html>
